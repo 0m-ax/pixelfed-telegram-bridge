@@ -1,0 +1,5 @@
+pixelfed_base_url = "http://pixelfed-staging.int.ast.cph.adgwry.com/"  
+pixelfed_account_id = ""
+telegram_channel_id = ""
+telegram_base_url = "https://api.telegram.org/"
+link_text = "Post by @0max@pixelfed-staging.int.ast.cph.adgwry.com"
