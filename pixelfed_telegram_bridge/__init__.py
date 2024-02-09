@@ -29,8 +29,9 @@ def __main__():
             print(line.strip())
         print(found)
         if not found:
-            media = []
+            caption = post["content_text"]+"\n<a href='"+post["url"]+"'>"+link_text+"</a>"
             if len(post["media_attachments"]) > 1:
+                media = []
                 for attachment in post["media_attachments"]:
                     if attachment["type"] == "image":
                         media.append({
@@ -40,7 +41,7 @@ def __main__():
                     else:
                         raise Exception("unkown post type")
                 media[-1]["parse_mode"] = "html"
-                media[-1]["caption"] = post["content_text"]+"\n<a href='"+post["url"]+"'>"+link_text+"</a>"
+                media[-1]["caption"] = caption
                 if not requests.post(f"{telegram_base_url}{telegram_bot_token}/sendMediaGroup", json={
                     "chat_id":telegram_channel_id,
                     "media": media
@@ -52,7 +53,8 @@ def __main__():
                     if not requests.post(f"{telegram_base_url}{telegram_bot_token}/sendPhoto",json={
                         "chat_id":telegram_channel_id,
                         "photo":attachment["url"],
-                        "caption":post["content_text"]+"\n"+post["url"]
+                        "parse_mode": "html",
+                        "caption":caption
                     }).json()["ok"]:
                         raise Exception("failed to send photo")
                 else:
