@@ -2,3 +2,4 @@
 config.toml
 posts.txt
 .venv
+__pycache__

@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "pixelfed-telegram-bridge"
+version = "0.1.0"
+description = "Bridge Pixelfed to Telegram"
+authors = ["Max Campbell <me@0m.ax>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+pftb = 'pixelfed_telegram_bridge.__init__:__main__'
